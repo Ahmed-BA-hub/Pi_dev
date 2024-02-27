@@ -1,0 +1,31 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <div class="service">
+        <div class="container">
+            <div class="section-header text-center">
+                <div id="google_translate_element"></div>
+                <h4 style="margin-top:50px; margin-bottom:50px;">Liste des services</h4>
+                <a href="{{ path('app_reservation_indexFront') }}">Aller à la liste des reservations</a>
+
+            </div>
+            <div class="row">
+        {% for service in services %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="service-item">
+                        <p><strong style="color:#696969">Categorie </strong> {{ service.getCategorieS }}</p>
+                        <p><strong style="color:#696969">Nom </strong> {{ service.getNom() }}</p>
+                        <img src="{{ asset('uploads/' ~service.imageser)}}" style=" width:360px; height:250px; " alt="">                        
+
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col">
+                        <p class="text-center">Aucune Reclamation trouvé.</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}
